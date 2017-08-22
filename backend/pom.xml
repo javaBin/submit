@@ -4,7 +4,7 @@
 
     <groupId>no.javazone</groupId>
     <artifactId>submit</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>submit</name>

@@ -37,6 +37,10 @@ public class EmailService {
         send(emailAddress, emailConfiguration.subjectPrefix + "JavaZone submission login", generateTokenEmail(token));
     }
 
+    public void sendTokenToUserAndInformAboutNewlyCreatedDraft(EmailAddress emailAddress, Token token) {
+        send(emailAddress, emailConfiguration.subjectPrefix + "JavaZone draft ready for editing", generateDraftEmail(token));
+    }
+
     public void notifySpeakerAboutStatusChangeToInReview(Submission submission) {
         submission.speakers.stream()
                 .map(s -> s.email)
@@ -69,10 +73,21 @@ public class EmailService {
     private String generateTokenEmail(Token token) {
         StringBuilder b = new StringBuilder();
         b.append("Ready to submit a talk to JavaZone, or editing your talk?\n\n");
-        b.append("Use this link to log your browser in to our submitting system:\n");
+        b.append("Use this link to log your browser in to our submission system:\n");
         b.append(emailConfiguration.tokenLinkPrefix).append("/").append(token).append("\n\n");
         b.append("Clicking this link will authenticate your browser and keep you logged in. Using a public computer? Use the 'forget me' button on the logged in page.").append("\n\n");
         b.append("Don't know why you received this email? Someone probably just misspelled their email address. Don't worry, they can't do anything on your behalf without this link").append("\n\n");
+        b.append("Best regards,").append("\n").append("The JavaZone Program Committee");
+        return b.toString();
+    }
+
+    private String generateDraftEmail(Token token) {
+        StringBuilder b = new StringBuilder();
+        b.append("We have created a draft for you in our submission system which you can use to create and submit your talk.\n\n");
+        b.append("Use this link to log your browser in to our submission system:\n");
+        b.append(emailConfiguration.tokenLinkPrefix).append("/").append(token).append("\n\n");
+        b.append("Clicking this link will authenticate your browser and keep you logged in. Using a public computer? Use the 'forget me' button on the logged in page.").append("\n\n");
+        b.append("Don't know why you received this email? You receive this email because someone in our program committee would like you to submit a talk. Contact us at program@java.no if you have any further questions.").append("\n\n");
         b.append("Best regards,").append("\n").append("The JavaZone Program Committee");
         return b.toString();
     }
