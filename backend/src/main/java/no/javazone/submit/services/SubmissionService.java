@@ -109,7 +109,7 @@ public class SubmissionService {
         }
 
         UpdatedSession updatedSession = new UpdatedSession(
-                parseAndValidateStatus(authenticatedUser, submission),
+                parseAndValidateStatus(authenticatedUser, previousSubmission, submission),
                 submission.title,
                 submission.theAbstract,
                 submission.intendedAudience,
@@ -190,9 +190,18 @@ public class SubmissionService {
         }
     }
 
-    private SessionStatus parseAndValidateStatus(AuthenticatedUser authenticatedUser, Submission submission) {
+    private SessionStatus parseAndValidateStatus(AuthenticatedUser authenticatedUser, Submission previousSubmission, Submission submission) {
+        SessionStatus previousStatus = SessionStatus.valueOf(previousSubmission.status);
         SessionStatus status = SessionStatus.valueOf(submission.status);
-        if (status == SessionStatus.DRAFT || status == SUBMITTED) {
+        if (previousStatus == SessionStatus.HISTORIC) {
+            LOG.warn(String.format("%s tried to set the status %s for a historic talk. This should not be editable. Bug???...", authenticatedUser.emailAddress.toString(), status.name()));
+            AuditLogger.log(EDIT_UNEDITABLE_TALK, "user " + authenticatedUser, "session " + submission.id, "status " + status);
+            throw new ForbiddenException("Tried to set a status that the user isn't allowed to set...");
+        } else if (previousStatus == SessionStatus.APPROVED || previousStatus == SessionStatus.REJECTED) {
+            // Don't edit status for approved or rejected talks, but allow editing
+            return previousStatus;
+        } else if (status == SessionStatus.DRAFT || status == SUBMITTED) {
+            // Edit status for drafts and submitted talks
             return status;
         } else {
             LOG.warn(String.format("%s tried to set the status %s that the user isn't allowed to set...", authenticatedUser.emailAddress.toString(), status.name()));
