@@ -178,7 +178,7 @@ viewSubmissionDetails submission model =
                 , ul [ class "speakers" ] <|
                     List.map (viewSpeaker submission <| List.length submission.speakers) submission.speakers
                 ]
-            , div [ class <| "input-section " ++ hideIfNotEditable submission.editable ]
+            , div [ class <| "input-section " ++ hideIfNotEditable submission.editable ++ " " ++ hideIfApprovedRejected submission.status ]
                 [ h2 [] [ text "How finished are you with your abstract?" ]
                 , p [ class "input-description" ] [ text "Keep it as a draft until you have filled in everything. If you set it to ready for review before March 27th, we'll try to give you some personal feedback. Don't worry, you can still make changes after marking it as ready for review." ]
                 , p [ class "input-description input-description-strong" ] [ text "Make sure you mark it as ready by April 24th at the latest to have your talk considered for JavaZone 2017! Mark your calendar! ;)" ]
@@ -306,6 +306,15 @@ hideIfEditable editable =
 hideIfNotEditable : Bool -> String
 hideIfNotEditable editable =
     if not editable then
+        "hide"
+    else
+        ""
+
+hideIfApprovedRejected : String -> String
+hideIfApprovedRejected status =
+    if status == "APPROVED" then
+        "hide"
+    else if status == "REJECTED" then
         "hide"
     else
         ""
