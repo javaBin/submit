@@ -77,7 +77,7 @@ public class SubmissionService {
 
     private Year sleepingpillYearToOurYear(Map.Entry<String, List<Session>> e, AuthenticatedUser authenticatedUser) {
         return new Year(
-                conferences.getNameFromId(e.getKey()),
+                conferences.getNameFromId(e.getKey()).replace("Javazone", "JavaZone"),
                 e.getValue().stream().map((session) -> fromSleepingPillSession(session, authenticatedUser)).collect(toList())
         );
     }
