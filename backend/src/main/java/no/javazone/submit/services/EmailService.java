@@ -102,7 +102,7 @@ public class EmailService {
         StringBuilder b = new StringBuilder();
         b.append("Dear " + speakerNames + "\n\n");
         b.append("Thank your for submitting your talk '" + submission.title + "' to JavaZone :)\n\n");
-        b.append("You just marked your talk as ready for review, meaning that the program committee will have a look at it at their earliest convenience. This year, we are trying to give speakers who send their talks in early some feedback. In case the program committee has any feedback for you, they will send it to you by email.\n\n");
+        b.append("You just marked your talk as ready for review, meaning that the program committee will have a look at it at their earliest convenience. In case the program committee has any feedback for you, they will send it to you by email.\n\n");
         b.append("Feel free to edit your talk further at any time. Just use the same browser as before - the submission system will keep you logged in. Alternatively, you can use this link to log any browser into our submission system to keep working on your talk:\n");
         b.append(emailConfiguration.tokenLinkPrefix).append("/").append(token).append("\n\n");
         b.append("Best regards,").append("\n").append("The JavaZone Program Committee");
