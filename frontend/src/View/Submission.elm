@@ -138,13 +138,6 @@ viewSubmissionDetails submission model =
                 , viewLength submission
                 ]
             , div [ class "input-section" ]
-                [ h2 [] [ text "Experience level" ]
-                , p [ class "input-description" ] [ text "Who is your talk pitched at?  Beginners, Experts or perhaps those in between?" ]
-                , radio "Beginner" "experience" "beginner" (Level "beginner") <| submission.level == "beginner"
-                , radio "Intermediate" "experience" "intermediate" (Level "intermediate") <| submission.level == "intermediate"
-                , radio "Advanced" "experience" "advanced" (Level "advanced") <| submission.level == "advanced"
-                ]
-            , div [ class "input-section" ]
                 [ h2 [] [ text "Suggested keywords" ]
                 , p [ class "input-description" ] [ text "Suggest up to five keywords that describe your talk. These will be used by the program committee to group the talks into categories. We reserve the right to edit these suggestions to make them fit into this years selected categories." ]
                 , input [ type_ "text", value submission.suggestedKeywords, onInput SuggestedKeywords, placeholder "Keyword 1, Keyword 2, ..." ] []
