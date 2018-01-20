@@ -241,7 +241,7 @@ viewSpeaker submission n ( i, speaker ) =
                 , input [ type_ "text", value speaker.twitter, placeholder "@YourTwitterName", onInput <| SpeakerTwitter i ] []
                 ]
             , div [ class "speaker-input-section" ]
-                [ h3 [] [ text "Your norwegian ZIP Code (optional)" ]
+                [ h3 [] [ text "Your Norwegian ZIP Code (optional)" ]
                 , input [ type_ "text", value speaker.zipCode, onInput <| SpeakerZipCode i, placeholder "Will let us contact you about future speaking opportunities in local javaBin user groups :)" ] []
                 ]
             , div [ class "speaker-input-section" ]
