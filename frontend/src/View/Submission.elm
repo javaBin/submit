@@ -79,22 +79,22 @@ viewSubmissionDetails submission model =
         [ div [ class "logo-wrapper" ] [ img [ src "assets/neon-logo.svg", class "logo" ] [] ]
         , div [ class <| "edit-intro " ++ hideIfNotEditable submission.editable ]
             [ h1 [] [ text "Ready? Let's make your talk a reality!" ]
-            , p [ class "ingress" ] [ text "JavaZone takes place in Oslo, Norway, on September 13th-14th 2017. Do YOU want to be one of the great speakers at our conference? Fantastic! That's what this thing is for! Let's get you started!" ]
+            , p [ class "ingress" ] [ text "JavaZone takes place in Oslo, Norway, on September 12th-13th 2018 (plus a day of workshops on the 11th September). Do YOU want to be one of the great speakers at our conference? Fantastic! That's what this thing is for! Let's get you started!" ]
             , div [ class "help-part" ]
-                [ strong [] [ span [] [ text "February 13th" ], text "Create your talk" ]
+                [ strong [] [ span [] [ text "February 12th" ], text "Create your talk" ]
                 , p [] [ text "Start creating your talk by filling in all the fields. We'll auto-save the talk for you as you edit, making sure you don't lose your great ideas." ]
                 ]
             , div [ class "help-part" ]
-                [ strong [] [ span [] [ text "March 27th" ], text "Get some feedback" ]
-                , p [] [ text "If you mark your talk for review before March 27th, we'll try to give you some personal feedback. We receive hundreds of talks, so we can't promise the world, but we'll do our best." ]
+                [ strong [] [ span [] [ text "February 12th – April 8th" ], text "Finish your submission" ]
+                , p [] [ text "By marking your talk for review you submit it to the Program Committee for evaluation. We receive hundreds of submissions, and will therefore be evaluating submissions as they arrive. In other words, submit early to increase your chances of acceptance! Note that you can still update your talk after marking it for review." ]
                 ]
             , div [ class "help-part" ]
-                [ strong [] [ span [] [ text "April 24th" ], text "Submission deadline" ]
-                , p [] [ text "Get all your last touches in by April 24th. After that, the program committee will go through all talks and select what will be a part of the program." ]
+                [ strong [] [ span [] [ text "April 8th" ], text "Submission deadline" ]
+                , p [] [ text "Get all your last touches in by April 8th! No new submissions will be accepted after this date!" ]
                 ]
             , div [ class "help-part" ]
-                [ strong [] [ span [] [ text "June 26th" ], text "Know your result" ]
-                , p [] [ text "By the end of June, all speakers will be get info about whether their talk is selected or not. Fingers crossed! If you are selected, you get to talk at JavaZone 2017!" ]
+                [ strong [] [ span [] [ text "End of June" ], text "Know your result" ]
+                , p [] [ text "By the end of June, all speakers will be get info about whether their talk is selected or not. Fingers crossed! If you are selected, you get to talk at JavaZone 2018!" ]
                 ]
             ]
         , div [ class <| "comments-wrapper " ++ hideIfNoComments submission ]
@@ -121,8 +121,8 @@ viewSubmissionDetails submission model =
                 , textarea [ value submission.abstract, onInput Abstract, placeholder "Try to sell your presentation as best as possible to the audience. \n\nShort and to the point is often a good starting point!" ] []
                 ]
             , div [ class "input-section" ]
-                [ h2 [] [ text "Expected audience and code level" ]
-                , p [ class "input-description" ] [ text "Who should attend this session?  How will the participants benefit from attending?  Please indicate how code will factor into your presentation (for example \"no code\", \"code in slides\" or \"live coding\")." ]
+                [ h2 [] [ text "Expected audience" ]
+                , p [ class "input-description" ] [ text "Who should attend this session? How will the participants benefit from attending? What experience (if any) should the audience have to get the most value out of your talk?" ]
                 , textarea [ class "small-textarea", value submission.intendedAudience, onInput IntendedAudience, placeholder "Who do you hope will be sitting in the audience for your talk?" ] []
                 ]
             , div [ class "input-section" ]
@@ -309,6 +309,7 @@ hideIfNotEditable editable =
         "hide"
     else
         ""
+
 
 hideIfApprovedRejected : String -> String
 hideIfApprovedRejected status =
