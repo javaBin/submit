@@ -7,11 +7,14 @@ import Messages exposing (Msg(..))
 
 view : Html Msg
 view =
-    div [ class "wrapper login " ]
-        [ div [ class "logo-wrapper" ]
-            [ img [ src "assets/neon-logo.svg", class "logo" ] []
+    div [ class "login" ]
+        [ div [ class "header" ]
+            [ div [ class "logo-wrapper" ]
+                [ img [ src "assets/logo.svg", class "logo" ] []
+                ]
+            , h1 [] [ text "Awesome!", br [] [], text " We are on it!" ]
             ]
-        , h1 [] [ text "Awesome!", br [] [], text " We are on it!" ]
+        , div [ class "pixel-border-bottom" ] []
         , div [ class "success-image-wrapper" ]
             [ img [ src "/assets/plane2.png", class "success-image" ] []
             ]
