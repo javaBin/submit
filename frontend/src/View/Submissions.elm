@@ -30,7 +30,10 @@ view model =
 viewWrapper : List (Html Msg) -> Html Msg
 viewWrapper content =
     div [ class "wrapper" ]
-        [ div [ class "logo-wrapper" ] [ img [ src "assets/neon-logo.svg", class "logo" ] [] ]
+        [ div [ class "header" ]
+            [ div [ class "logo-wrapper" ] [ img [ src "assets/logo.svg", class "logo" ] [] ]
+            ]
+        , div [ class "pixel-border-bottom" ] []
         , div [ class "submissions-list" ]
             content
         ]

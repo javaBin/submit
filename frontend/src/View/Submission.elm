@@ -34,7 +34,10 @@ view model =
 viewLoading : Html Msg
 viewLoading =
     div [ class "wrapper" ]
-        [ div [ class "logo-wrapper" ] [ img [ src "assets/neon-logo.svg", class "logo" ] [] ]
+        [ div [ class "header" ]
+            [ div [ class "logo-wrapper" ] [ img [ src "assets/logo.svg", class "logo" ] [] ]
+            ]
+        , div [ class "pixel-border-bottom" ] []
         , div [ class "edit-submission" ]
             [ div [ class "edit-submission loading" ] [ text "Loading ..." ] ]
         ]
@@ -76,7 +79,10 @@ viewFooter submission model =
 viewSubmissionDetails : Submission -> Model -> Html SubmissionField
 viewSubmissionDetails submission model =
     div []
-        [ div [ class "logo-wrapper" ] [ img [ src "assets/neon-logo.svg", class "logo" ] [] ]
+        [ div [ class "header" ]
+            [ div [ class "logo-wrapper" ] [ img [ src "assets/logo.svg", class "logo" ] [] ]
+            ]
+        , div [ class "pixel-border-bottom" ] []
         , div [ class <| "edit-intro " ++ hideIfNotEditable submission.editable ]
             [ h1 [] [ text "Ready? Let's make your talk a reality!" ]
             , p [ class "ingress" ] [ text "JavaZone takes place in Oslo, Norway, on September 12th-13th 2018 (plus a day of workshops on the 11th September). Do YOU want to be one of the great speakers at our conference? Fantastic! That's what this thing is for! Let's get you started!" ]
