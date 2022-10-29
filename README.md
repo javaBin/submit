@@ -1,3 +1,7 @@
+# Legacy
+
+We do not use this, anymore. Replaced by https://github.com/javaBin/submitthethird
+
 # What is this?
 
 This is an application that lets speakers submit talks to JavaZone.
