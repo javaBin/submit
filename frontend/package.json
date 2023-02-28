@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "elm": "^0.18.0",
+    "elm": "^0.19.1-5",
     "elm-live": "^2.7.5",
     "less": "^3.8.1",
     "npm-run-all": "^4.1.3",
